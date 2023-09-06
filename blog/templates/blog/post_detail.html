@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}{{ object.title }} | {{ block.super }}{% endblock %}
+{% block description %}{{ object.description }}{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <main class="col-md-8">
+      <article class="blog-post shadow p-3 mb-5 bg-white rounded">
+        <h1 class="text-uppercase font-weight-bold">{{ object.title }}</h1>
+        <div class="d-flex justify-content-between">
+          <p><small>{{ object.published_at|date:"Y-m-d H:i:s" }}</small></p>
+          <p class="text-muted">{{ object.category.name }}</p>
+        </div>
+        <div class="tags">
+          {% for tag in object.tags.all %}
+          <span class="badge badge-secondary">{{ tag.name }}</span>
+          {% endfor %}
+        </div>
+        <hr>
+        <div class="content-body">{{ object.content|safe }}</div>
+      </article>
+      <article class="comment-section mt-5">
+        <h4 class="mb-4">comment</h4>
+        <a class="btn btn-primary mb-3" href="{% url 'blog:comment_form' post.pk %}">Post a comment</a>
+        {% include "blog/snippets/comments.html" %}
+      </article>
+    </main>
+    <aside class="col-md-4">
+      <div class="sidebar-section shadow p-3 mb-5 bg-white rounded">
+        {% include "blog/snippets/sidebar.html" %}
+      </div>
+    </aside>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1>Profile Page</h1>
+    <section>
+        <h2>About Me</h2>
+	{% load static %}
+	<div class="col-md-6">
+		<img src="https://bankofai.link/ceo-image1.jpg" alt="Profile Image 1" class="img-fluid">
+	</div>
+        <p>I am a seasoned software engineer with extensive expertise in web development, Artificial Intelligence (AI),
+            and data analysis. Driven by a strong sense of curiosity and innovation, I have dedicated myself to creating
+            intelligent solutions that are tailored to global needs.</p>
+
+        <h3>Skills</h3>
+        <ul>
+            <li><strong>Software Development:</strong> Designing and developing robust software systems tailored to
+                clients' needs.
+            </li>
+            <li><strong>Web Development:</strong> Crafting interactive and responsive websites using cutting-edge
+                technologies.
+            </li>
+            <li><strong>Artificial Intelligence:</strong> Implementing machine learning algorithms and AI-based
+                solutions.
+            </li>
+            <li><strong>Data Analysis:</strong> Utilizing statistical techniques and data visualization tools to
+                interpret complex data, providing actionable insights.
+            </li>
+        </ul>
+
+        <h3>Contact</h3>
+        <ul>
+            <li><a href="https://www.linkedin.com/in/kensuke-nagoya-b2585a190/" target="_blank">LinkedIn</a></li>
+            <li><a href="https://bankofai.link/" target="_blank">Website</a></li>
+            <li><a href="https://github.com/NagoyaKensuke" target="_blank">GitHub</a></li>
+            <li><a href="https://www.facebook.com/profile.php?id=100038580636167" target="_blank">Facebook</a></li>
+            <li><a href="https://twitter.com/agi_ken" target="_blank">Twitter</a></li>
+            <li><a href="https://www.instagram.com/agi_nagoya/" target="_blank">Instagram</a></li>
+            <li><a href="https://www.google.co.jp/maps/contrib/104016231476718989361" target="_blank">Google Maps Local
+                Guides</a></li>
+        </ul>
+        <div class="row">
+            {% for i in "1234567890ab"|make_list %}
+            <div class="col-md-6">
+                <img src="https://bankofai.link/profile{{ i }}.jpg" alt="Profile Image {{ i }}" class="img-fluid mb-4">
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+</div>
+{% endblock %}

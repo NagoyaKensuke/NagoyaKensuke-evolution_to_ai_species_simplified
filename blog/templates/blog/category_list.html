@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}All Categories | {{ block.super }}{% endblock %}
+{% block description %}All Categories{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+  <h1 class="mb-4">All Categories</h1>
+  <div class="list-group">
+    {% for category in object_list %}
+    <a href="{% url 'blog:category_post' category.slug %}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+      {{ category.name }}
+      <span class="badge badge-primary badge-pill">{{ category.num_posts }}</span>
+    </a>
+    {% empty %}
+    <li class="list-group-item">No Categories</li>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

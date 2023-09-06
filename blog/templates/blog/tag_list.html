@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}All Tags List | {{ block.super }}{% endblock %}
+{% block description %}All Tag List{% endblock %}
+
+{% block content %}
+<h1>All Tag List</h1>
+<ul>
+  {% for tags in object_list %}
+  <li><a href="{% url 'blog:tag_post' tag.slug %}">{{ tag.name }} ({{ tag.num_posts }})</a></li>
+  {% empty %}
+  <li>No Tags</li>
+  {% endfor %}
+</ul>
+{% endblock %}
